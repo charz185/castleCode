@@ -60,7 +60,6 @@ public class Messenger extends ChessPiece
         board.setTurn(board.getTurn()-XMoves.length);
         int temp = board.getCell(targetX,targetY);
         board.setBoard(UnaffectedCells);
-        System.out.println(UnaffectedCells);
         board.setCell(targetX,targetY,temp);
         board.setPieces(InstructionPieces);
     }

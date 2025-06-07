@@ -387,41 +387,13 @@ public class Driver
                 int[][] tempXMoves;
                 int[][] tempYMoves;
                 ChessPiece[] pieces = Arrays.copyOfRange(board.getPieces(),0,board.getPieces().length);
-                for(int p=0;p < pieces.length;p++){
-                    ChessPiece c = pieces[p];
-                    if (c == piece){
-                        pieces[p] = c;
-                    }else{
-                        switch(c.getPieceType()){
-                            case "Messenger":
-                                pieces[p] = new Messenger(c.getX(),c.getY(),c.getIsBlack());
-                                Messenger m = (Messenger)c;
-                                Messenger m2 = (Messenger)pieces[p];
-                                m2.setInstructions(m.getXMoves(),m.getYMoves(),m.getPieces(),m.getBoardValue());
-                                pieces[p] = m2;
-                                System.out.println("mes");
-                                break;
-                            case "Pawn":
-                                pieces[p] = new Pawn(c.getX(),c.getY(),c.getIsBlack());
-                                break;
-                            case "Jester":
-                                pieces[p] = new Jester(c.getX(),c.getY(),c.getIsBlack());
-                                break;
-                            case "Rook":
-                                pieces[p] = new Rook(c.getX(),c.getY(),c.getIsBlack());
-                                break;
-                            case "Scribe":
-                                pieces[p] = new Scribe(c.getX(),c.getY(),c.getIsBlack());
-                                break;
-                        }
-                }
-                }
+                
                 int z = 1;
                 while(piece != board.findPieceByCell(xMoves[i+z][0],yMoves[i+z][0]))
                 {
                     z++;
                     if (i+z > xMoves.length){
-                        board.printError("[ERROR] Unending Loop: Piece type is Messenger\n turn was #"+(i+1));
+                        board.printError("[ERROR] Unclosed Loop: Piece type is Messenger\n turn was #"+(i+1));
                     }
                 }
                 tempXMoves = new int[z][2];

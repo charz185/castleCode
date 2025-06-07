@@ -59,7 +59,7 @@ public abstract class ChessPiece
         }
         return false;
     }
-    public int[][] getHVLineOfCells(Board b,int tx, int ty){
+    public int[][] getHVLineOfCells(int tx, int ty){
         ArrayList<int[]> cells = new ArrayList<int[]>();
         if (tx == getX()){
             if (ty-getY() > 0){
@@ -79,6 +79,27 @@ public abstract class ChessPiece
             }else{
                 for (int x = getX()-1;x>tx;x--){
                    cells.add(new int[]{x,ty});
+                }
+            }
+        }
+        return cells.toArray(new int[cells.size()][2]);
+    }
+    public int[][] getDiagonalCells(int tx, int ty){
+        ArrayList<int[]> cells = new ArrayList<int[]>();
+        if (getX()-x >0){
+            for (int i = 0; i < getX()-x; i++){
+                if (getY()-y >0){
+                    cells.add(new int[]{getX()+i,getY()+i});
+                } else{
+                    cells.add(new int[]{getX()+i,getY()-i});
+                }
+            }
+        } else{
+            for (int i = 0; i < Math.abs(getX()-x); i++){
+                if (getY()-y >0){
+                    cells.add(new int[]{getX()-i,getY()-i});
+                } else{
+                    cells.add(new int[]{getX()-i,getY()+i});
                 }
             }
         }
