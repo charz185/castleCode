@@ -94,7 +94,7 @@ public class Driver
         yMoves = yMovesList.toArray(new int[yMovesList.size()][2]);
         
         runMoveScript(board,xMoves,yMoves);
-        System.out.print(board);
+        //System.out.print(board);
     }
     public static void ChickenJockey()
     {
@@ -230,25 +230,19 @@ public class Driver
     public static void messengerTesting(){
         ArrayList<ChessPiece> pieces = new ArrayList<ChessPiece>();
         
-        pieces.add(new Messenger(0,0,true));
-        pieces.add(new Pawn(7,5,false));
+        pieces.add(new Oracle(0,0,false));
+        pieces.add(new Pawn(6,3,true));
         Board board = SetupBoard(8,8,pieces.toArray(new ChessPiece[pieces.size()]));
         
         ArrayList<int[]> xMovesList = new ArrayList<int[]>(); 
         ArrayList<int[]> yMovesList = new ArrayList<int[]>(); 
         
-        
-        xMovesList.add(new int[] {7,7});
-        yMovesList.add(new int[] {5,4});
-        
         xMovesList.add(new int[] {0,7});
         yMovesList.add(new int[] {0,4});
         
-        xMovesList.add(new int[] {7,7});
-        yMovesList.add(new int[] {4,3});
+        xMovesList.add(new int[] {6,7});
+        yMovesList.add(new int[] {3,4});
         
-        xMovesList.add(new int[] {0,7});
-        yMovesList.add(new int[] {0,4});
         
         
         runMoveScript(board,xMovesList.toArray(new int[xMovesList.size()][2]),yMovesList.toArray(new int[yMovesList.size()][2]));
@@ -381,7 +375,7 @@ public class Driver
     public static void checkMoveScript(Board board, int[][] xMoves,int[][] yMoves){
         for (int i=0; i < xMoves.length;i++){
             ChessPiece piece = board.findPieceByCell(xMoves[i][0],yMoves[i][0]);
-            System.out.println("turn #"+xMoves[i][0]+" "+yMoves[i][0]);
+            //System.out.println("turn #"+xMoves[i][0]+" "+yMoves[i][0]);
             //messengers
             if (piece != null && piece.getPieceType()=="Messenger"){
                 int[][] tempXMoves;
@@ -424,7 +418,7 @@ public class Driver
             }
             if (xMoves[i][0] != -1){
                 ChessPiece piece = board.findPieceByCell(xMoves[i][0],yMoves[i][0]);
-                System.out.println(xMoves[i][0]+" "+yMoves[i][0]+" t"+xMoves[i][1]+" t"+yMoves[i][1]);
+                //System.out.println(xMoves[i][0]+" "+yMoves[i][0]+" t"+xMoves[i][1]+" t"+yMoves[i][1]);
                 piece.moveTo(board,xMoves[i][1],yMoves[i][1]);
             }
         }
