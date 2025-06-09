@@ -14,7 +14,7 @@ import java.io.PrintWriter;
 public class interpreter
 {
     
-    public static void Main(String[] args){
+    public static void main(String[] args){
         Board b= RunScript(args[0]);
         if (args.length >1){
             try {
@@ -54,15 +54,16 @@ public class interpreter
         ArrayList<int[]> xMovesList = new ArrayList<int[]>(); 
         ArrayList<int[]> yMovesList = new ArrayList<int[]>(); 
         for (String cmd: commands){
-            if (cmd.trim() == "Moves"){
+            if (cmd.trim().equals("Moves")){
                 PastPieces = true;
-            }
-            if (!PastPieces){
-                pieces.add(CmdToPiece(cmd));
             } else{
-                int[] move = CmdToMove(cmd);
-                xMovesList.add(new int[] {move[0],move[1]});
-                yMovesList.add(new int[] {move[2],move[3]});
+                if (!PastPieces){
+                    pieces.add(CmdToPiece(cmd));
+                } else{
+                    int[] move = CmdToMove(cmd);
+                    xMovesList.add(new int[] {move[0],move[2]});
+                    yMovesList.add(new int[] {move[1],move[3]});
+                }
             }
         }
         Board board = SetupBoard(Integer.parseInt(B[0]),Integer.parseInt(B[1]),pieces.toArray(new ChessPiece[pieces.size()]));
@@ -74,7 +75,7 @@ public class interpreter
         return new int[]{Integer.parseInt(cmdSplit[0]),Integer.parseInt(cmdSplit[1]),Integer.parseInt(cmdSplit[2]),Integer.parseInt(cmdSplit[3])};
     }
     public static ChessPiece CmdToPiece(String cmd){
-        String[] splitCmd = cmd.split(" ");
+        String[] splitCmd = cmd.trim().split(" ");
         ChessPiece returnPiece = null;
         switch (splitCmd[0]){
             case "Pawn":

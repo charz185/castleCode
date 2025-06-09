@@ -1,4 +1,4 @@
-
+import java.lang.Character;
 /**
  * Write to Terminal (ascii) operator piece
  *
