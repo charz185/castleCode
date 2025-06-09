@@ -41,6 +41,9 @@ public class interpreter
           
           while (myReader.hasNextLine()) {
             String cmd = myReader.nextLine();
+            if (cmd.contains("#")){
+                cmd = cmd.split("#")[0];
+            }
             commands.add(cmd);
           }
           myReader.close();
