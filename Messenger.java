@@ -56,6 +56,9 @@ public class Messenger extends ChessPiece
         }
         
     }
+    /**
+     * reverses board to begining of the loop
+     */
     public void reverseBoard(Board board, int targetX, int targetY){
         board.setTurn(board.getTurn()-XMoves.length);
         int temp = board.getCell(targetX,targetY);
@@ -63,6 +66,7 @@ public class Messenger extends ChessPiece
         board.setCell(targetX,targetY,temp);
         board.setPieces(InstructionPieces);
     }
+    
     public int[][] getBoardValue(){
         if (UnaffectedCells == null){
             return null;
@@ -73,6 +77,9 @@ public class Messenger extends ChessPiece
         }
         return b1;
     }
+    /**
+     * sets the instructions and needed values for the loop.
+     */
     public void setInstructions(int[][] XMoves,int[][] YMoves,ChessPiece[] InstructionPieces,int[][] UnaffectedCells){
         this.InstructionPieces = InstructionPieces;
         this.XMoves = XMoves;

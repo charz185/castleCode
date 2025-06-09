@@ -16,6 +16,10 @@ public abstract class ChessPiece
         this.y = y;
         this.isBlack = isBlack;
     }
+    /**
+     * Default move function.
+     * Moves the piece,removes any piece at target cell, increments turn, and does the piece's cell function.
+     */
     public void moveTo(Board b,int x, int y){
         b.removePieceByCell(x,y);
         CellFunction(b,x,y);
@@ -32,8 +36,14 @@ public abstract class ChessPiece
     public boolean getIsBlack(){
         return isBlack;
     }
+    /**
+     * The function the piece will enact when it moves to a new cell.
+     */
     public abstract void CellFunction(Board b,int tx, int ty);
-    
+    /**
+     * Checks if there is a piece in the targeted position that can be captured.
+     * Returns true if there is, false if the cell is empty or of the same color.
+     */
     public boolean capturePiece(Board b,int x, int y){
         ChessPiece tCellPiece = b.findPieceByCell(x,y);
         if (tCellPiece != null){
@@ -59,6 +69,11 @@ public abstract class ChessPiece
         }
         return false;
     }
+    /**
+     * Gets a Horizontal or Vertical line of cell positions, and returns them in a 2d Array.
+     * [[x,y],[x,y]] <- each 1d array is a cell holding its positions.
+     * Does NOT return actual cell values.
+     */
     public int[][] getHVLineOfCells(int tx, int ty){
         ArrayList<int[]> cells = new ArrayList<int[]>();
         if (tx == getX()){
@@ -84,6 +99,11 @@ public abstract class ChessPiece
         }
         return cells.toArray(new int[cells.size()][2]);
     }
+    /**
+     * Gets a Diagonal line of cell positions, and returns them in a 2d Array.
+     * [[x,y],[x,y]] <- each 1d array is a cell holding its positions.
+     * Does NOT return actual cell values.
+     */
     public int[][] getDiagonalCells(int tx, int ty){
         ArrayList<int[]> cells = new ArrayList<int[]>();
         if (getX()-x >0){
@@ -105,5 +125,9 @@ public abstract class ChessPiece
         }
         return cells.toArray(new int[cells.size()][2]);
     }
+    /**
+     * Returns subclasses name of piece.
+     * Pawn class returns "Pawn".
+     */
     public abstract String getPieceType();
 }

@@ -9,6 +9,7 @@ public class Scribe extends ChessPiece
     public Scribe(int x, int y, boolean isBlack){
         super(x,y,isBlack);
     }
+    @Override
     public void CellFunction(Board board,int targetX, int targetY){
         System.out.print((char)(board.getCell(targetX,targetY)));
     }    
