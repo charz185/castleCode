@@ -1,19 +1,19 @@
-10 10
+10 10 #chicken jockey script
 Scribe 1 0 true
 Scribe 1 1 false
 Oracle 1 2 true
 Oracle 1 3 false
 Moves
-1 3 0 0 35
-1 2 0 1 46
-0 0 0 2 90
-0 1 0 3 83
-0 2 0 4 88
-0 3 0 5 10
-0 4 9 9
-0 5 8 9 start
+1 3 0 0 #input 35
+1 2 0 1 #input 46
+0 0 0 2 #input 90
+0 1 0 3 #input 83
+0 2 0 4 #input 88
+0 3 0 5 #input 10
+0 4 9 9 #input anything
+0 5 8 9 #input anything
 1 0 0 0
-1 1 2 1 #amog
+1 1 2 1
 0 0 1 0
 2 1 0 0
 1 0 2 0
